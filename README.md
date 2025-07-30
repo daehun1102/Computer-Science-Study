@@ -22,14 +22,64 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
 
 컴퓨터 공학 전반적인 개념 학습과 기술 면접 준비 중심으로 진행합니다!
 
-- [🌐 네트워크](./network/)
-- ⚙️ 운영체제  
-- 🗄️ 데이터베이스  
-- ☕ Java  
-- 🌱 Spring  
-- 🧱 객체지향  
-- 🧩 시스템 아키텍처  
-- 🔖 기타 면접 대비 주제 등...
+# <div align="center"><h5>💡 학습 주제 </h5></div>
+
+<div align="center">
+
+<table>
+  <thead>
+    <tr>
+      <th>분야</th>
+      <th>설명</th>
+      <th>정리 링크</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>🌐 네트워크</td>
+      <td>OSI 7계층, TCP/IP, DNS, HTTP 등 전송 계층 중심의 개념</td>
+      <td><a href="./network/">바로가기</a></td>
+    </tr>
+    <tr>
+      <td>⚙️ 운영체제</td>
+      <td>프로세스, 스레드, CPU 스케줄링, 메모리 관리 등</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>🗄️ 데이터베이스</td>
+      <td>RDBMS, 트랜잭션, 인덱스, 정규화, NoSQL 개요</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>☕ Java</td>
+      <td>JVM, 객체지향 특징, 예외 처리, 컬렉션 프레임워크 등</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>🌱 Spring</td>
+      <td>DI, AOP, MVC 패턴, Bean 생명주기 등 스프링 기본기</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>🧱 객체지향</td>
+      <td>OOP 4대 원칙, SOLID 원칙, 설계 패턴 기본</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>🧩 시스템 아키텍처</td>
+      <td>모놀리식 vs MSA, 로드 밸런싱, 캐시, 로그 설계 등</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>🔖 기타</td>
+      <td>기술 면접 대비를 위한 주요 CS 토픽</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
 
 ---
 
