@@ -61,12 +61,34 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
 스터디원 정보를 간단하게 정리해두는 페이지입니다.  
 출석률, 역할, 깃허브 링크 등을 함께 관리해요. ✨
 
-| 이름 | GitHub | 출석률 | 한마디 |
-|------|--------|--------|--------|
-| 김영웅 | [@hiro](https://github.com/Kyoungwoong) | 스터디를 통해 감각 유지! |
-| 정대훈 |  |  |
-| 박희범 |  |  |
-| 이정균 |  |  |
+## 👋 스터디원 소개
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://avatars.githubusercontent.com/u/86853496?v=4" width="100px;" alt="김영웅"/>
+        <br/>
+        <img src="https://img.shields.io/badge/출석률-0%2F4-blue?style=flat-square"/>
+        <br/>
+        김영웅
+        <br/>
+        <a href="https://github.com/Kyoungwoong"><b>@hiro</b></a>
+      </td>
+      <td align="center">
+        정대훈
+      </td>
+      <td align="center">
+        박희범
+      </td>
+      <td align="center">
+        이정균
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
 
 
 <div align="center">📚 우리만의 아침 루틴으로 지식을 쌓아가요! 함께 해요 ☀️</div>
