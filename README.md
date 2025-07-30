@@ -136,6 +136,8 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
       </td>
       <td align="center">
         이정균
+        <br/>
+        <a href="https://github.com/LeeJungKyun"><b>@Jungkyun</b></a>
       </td>
     </tr>
   </table>
