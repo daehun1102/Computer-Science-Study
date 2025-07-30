@@ -132,7 +132,7 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
         정대훈
       </td>
       <td align="center">
-        박희범
+        박희범!
       </td>
       <td align="center">
         이정균
