@@ -67,7 +67,7 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
   <table>
     <tr>
       <td align="center">
-        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Kyoungwoong" width="100px" alt="김영웅"/>
+        <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairTheCaesar&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=BlazerShirt&clotheColor=PastelBlue&eyeType=Wink&eyebrowType=RaisedExcited&mouthType=Default&skinColor=Light" width="100px" alt="김영웅"/>
         <br/>
         <br/>
         김영웅
