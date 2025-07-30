@@ -130,6 +130,8 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
       </td>
       <td align="center">
         정대훈
+        <br/>
+        <a href="https://github.com/daehun1102"><b>@Daehun</b></a>
       </td>
       <td align="center">
         박희범!
