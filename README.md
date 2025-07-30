@@ -46,22 +46,22 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
     <tr>
       <td>⚙️ 운영체제</td>
       <td>프로세스, 스레드, CPU 스케줄링, 메모리 관리 등</td>
-      <td></td>
+      <td><a href="./operating-system/">바로가기</a></td>
     </tr>
     <tr>
       <td>🗄️ 데이터베이스</td>
       <td>RDBMS, 트랜잭션, 인덱스, 정규화, NoSQL 개요</td>
-      <td></td>
+      <td><a href="./database/">바로가기</a></td>
     </tr>
     <tr>
       <td>☕ Java</td>
       <td>JVM, 객체지향 특징, 예외 처리, 컬렉션 프레임워크 등</td>
-      <td></td>
+      <td><a href="./java/">바로가기</a></td>
     </tr>
     <tr>
       <td>🌱 Spring</td>
       <td>DI, AOP, MVC 패턴, Bean 생명주기 등 스프링 기본기</td>
-      <td></td>
+      <td><a href="./spring/">바로가기</a></td>
     </tr>
     <tr>
       <td>🧱 객체지향</td>
