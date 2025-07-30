@@ -67,9 +67,8 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
   <table>
     <tr>
       <td align="center">
-        <img src="https://avatars.githubusercontent.com/u/86853496?v=4" width="100px;" alt="김영웅"/>
+        <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=Black&clotheType=Hoodie&clotheColor=Blue01&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light" width="100px" alt="김영웅"/>
         <br/>
-        <img src="https://img.shields.io/badge/출석률-0%2F4-blue?style=flat-square"/>
         <br/>
         김영웅
         <br/>
