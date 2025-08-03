@@ -435,3 +435,137 @@ Connection: close
 ---
 
 > 쿠키는 웹 애플리케이션에서 사용자 맞춤화와 세션 관리를 위해 필수적인 메커니즘이지만, 적절한 보안 설정 없이는 개인정보 유출 위험이 존재합니다.
+
+## 🌐 DNS - 인터넷 디렉터리 서비스
+
+### ✅ 개요
+
+- 호스트는 **호스트 이름(hostname)** 과 **IP 주소**로 식별됨
+- 사용자는 기억하기 쉬운 **호스트 이름** 선호: ex) `www.google.com`, `www.facebook.com`
+- **라우터와 네트워크**는 처리 효율을 위해 **IP 주소** 선호
+- DNS(Domain Name System)는 **hostname ↔ IP address** 변환 서비스를 제공
+
+---
+
+### 🧠 IP 주소란?
+
+- 4바이트(32비트)로 구성된 계층적 주소 체계
+- 형식 예: `127.7.106.83` (각 바이트는 0~255, 점으로 구분)
+- **왼쪽에서 오른쪽으로** 읽으며 위치 파악
+
+---
+
+### 🧭 DNS가 제공하는 서비스
+
+1. **분산 데이터베이스**: 계층 구조의 DNS 서버들이 네임 레코드를 저장
+2. **응용 계층 프로토콜**: 호스트가 IP 주소 질의를 할 수 있도록 함
+3. **UDP 기반 통신 사용 (port 53)**: 빠른 응답을 위해
+4. **다른 프로토콜과 통합됨**: HTTP, SMTP, FTP 등에서 hostname ↔ IP 변환 시 사용
+
+---
+
+### 🔁 DNS 동작 흐름
+
+1. 사용자는 브라우저에 URL 입력 (`www.someschool.edu`)
+2. 브라우저는 hostname을 추출해 DNS 클라이언트에 전달
+3. DNS 클라이언트는 DNS 서버에 질의 전송
+4. IP 주소 응답 수신
+5. 브라우저는 받은 IP로 TCP 연결 (ex. port 80)
+
+> DNS 응답 지연을 줄이기 위해 DNS **캐싱** 사용
+
+---
+
+### 💡 DNS의 부가 기능
+
+- **Host aliasing**: hostname의 별명 관리
+- **Mail server aliasing**: 사용자가 기억하기 쉬운 이메일 도메인 제공
+- **Load distribution**: 하나의 hostname에 여러 IP 주소 연결하여 부하 분산
+
+---
+
+### 🏗️ DNS 서버 계층 구조
+![DNS 계층구조](./img/dnsH.png)
+1. **Root DNS Server**
+  - 전 세계에 400개 이상 존재
+  - 13개 기관에서 관리
+2. **TLD 서버 (Top Level Domain)**
+  - `.com`, `.org`, `.kr`, `.edu` 등의 상위 도메인 담당
+  - 책임 DNS 서버 정보 제공
+3. **Authoritative DNS Server**
+  - 특정 도메인에 대한 최종 IP 주소를 가지고 있는 서버
+
+---
+
+### 🔍 예시 흐름: `www.amazon.com`
+
+1. 클라이언트 → 루트 DNS: `.com` TLD 서버 정보 요청
+2. 루트 DNS → TLD 서버 IP 반환
+3. 클라이언트 → TLD 서버: `amazon.com` 질의
+4. TLD 서버 → Authoritative DNS IP 반환
+5. 클라이언트 → Authoritative DNS: `www.amazon.com` 질의
+6. IP 주소 응답
+
+---
+
+### 📍 로컬 DNS 서버
+![localDNS](./img/localDns.png)
+- **ISP나 조직 단위**로 존재
+- 계층 구조에는 포함되지 않지만 **DNS 프록시 역할**
+- 클라이언트의 질의를 Root/TLD 등으로 전달
+- 응답을 **캐시**하여 향후 요청 처리 속도 향상
+
+---
+
+### 🔁 재귀 질의 vs 반복 질의
+
+| 질의 종류 | 설명 |
+|-----------|------|
+| 재귀 질의 | 클라이언트가 로컬 DNS에 요청 → 로컬 DNS가 끝까지 처리 |
+| 반복 질의 | 로컬 DNS가 다른 DNS 서버에 단계별로 요청 |
+
+---
+
+### 💾 DNS 캐싱
+
+- DNS 서버는 응답받은 IP 정보를 일정 시간 동안 캐시
+- TTL(Time-To-Live)을 기준으로 만료 여부 결정
+- 성능 향상 및 네트워크 부하 감소
+
+---
+
+### 📦 DNS 레코드 (Resource Records)
+
+형식: `(Name, Value, Type, TTL)`
+
+| Type  | 설명 |
+|-------|------|
+| `A`   | hostname → IP 주소 |
+| `NS`  | 도메인 → 권한 DNS 서버 |
+| `CNAME` | 별칭 hostname → 정식 hostname |
+| `MX`  | 메일 서버의 정식 hostname |
+
+예시:
+- `(relay1.bar.foo.com, 145.37.93.126, A)`
+- `(foo.com, dns.foo.com, NS)`
+- `(foo.com, relay1.bar.foo.com, CNAME)`
+
+---
+
+### ✉️ DNS 메시지 구조
+![DNS Message Format](./img/DNSMessageFormat.png)
+- **헤더 (12바이트)**
+  - 질의 ID, 플래그 비트(질의/응답 여부, 재귀 요청 등)
+- **질문 영역**
+  - 질의할 도메인 이름, 타입 포함
+- **답변 영역**
+  - 실제 응답 데이터 (IP 주소 등)
+- **권한 영역**
+  - 권한 있는 서버 정보
+- **추가 정보 영역**
+  - 기타 부가적인 데이터
+
+---
+
+> 📚 DNS는 웹 브라우징, 이메일, 클라우드 서비스 등 거의 모든 인터넷 활동에서 핵심적인 역할을 하며, 
+> 성능 및 신뢰성을 확보하기 위해 분산, 캐싱, 계층 구조 등 다양한 설계를 사용합니다.
