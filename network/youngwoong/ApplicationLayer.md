@@ -143,3 +143,218 @@ http://www.SSAFY.edu/someDepartment/picture.gif
 | 지연 시간        | 상대적으로 길어질 수 있음 | 상대적으로 짧음              |
 | HTTP 버전        | HTTP/1.0                   | HTTP/1.1 이상                  |
 | 성능             | 낮음                       | 높음                           |
+
+### HTTP Message Format
+
+**HTTP Request Message**
+![Request Message](./img/requestMessage.png)
+
+**특징**
+1. Human Readable
+2. CR과 LF(carriage return & line feed)로 구분
+3. 메시지 끝에는 **추가적인 CRLF 줄**이 붙어 메시지 종료를 알림
+4. 메시지는 아래의 **세 가지 주요 구성 요소**로 이루어짐:
+  - Request Line
+  - Header Fields
+  - Message Body (선택)
+
+**HTTP Request Message Format**
+
+**Format**
+
+```
+<HTTP 메서드> <Request-URI> <HTTP 버전>
+Header1: Value1
+Header2: Value2
+...
+
+<Message Body> (선택)
+```
+
+예시:
+
+```
+GET /index.html HTTP/1.1
+Host: www.example.com
+Connection: close
+User-Agent: Mozilla/5.0
+Accept-Language: fr
+```
+
+---
+
+## 📌 구성 요소
+
+### 1️⃣ Method
+
+```http
+<HTTP 메서드> <Request-URI> <HTTP 버전>
+```
+
+예:
+```
+GET /index.html HTTP/1.1
+```
+
+- **Method 종류 및 설명**
+
+| Method   | 설명                                   | 특성             |
+|----------|----------------------------------------|------------------|
+| `GET`    | URL에 정보를 포함하여 리소스 요청      | 쿠키 사용 가능, 캐싱 가능 |
+| `POST`   | 데이터 전송 (요청 본문에 포함)         | 주로 폼 전송에 사용 |
+| `HEAD`   | 리소스의 헤더만 요청                   | 응답 본문 제외 |
+| `PUT`    | 리소스 전체 수정                       | **멱등** |
+| `PATCH`  | 리소스 부분 수정                       | 멱등 아님 |
+| `DELETE` | 리소스 삭제                            | **멱등** |
+
+> 💡 **멱등성 (Idempotency)**: 같은 요청을 여러 번 보내도 같은 결과를 얻는 성질
+
+---
+
+### 2️⃣ Header Fields
+
+![HTTP Header](./img/HttpHeader.png)
+
+- 각 헤더는 `Key: Value` 형식
+- 요청에 대한 메타정보 제공
+
+| 헤더 필드          | 설명 |
+|--------------------|------|
+| `Host`             | 요청한 호스트 이름 (예: `www.someschool.edu`) |
+| `Connection: close`| 서버에게 지속 연결을 사용하지 않겠다는 신호 |
+| `User-Agent`       | 브라우저나 클라이언트 종류 명시 |
+| `Accept-Language`  | 원하는 언어 버전 명시 (예: `fr`) |
+
+> 🔸 헤더는 **프록시 서버나 캐시 서버를 거칠 때**도 중요한 역할을 합니다.
+
+---
+
+### 3️⃣ Body (본문)
+
+- 요청에 포함되는 데이터
+- **POST**, **PUT**, **PATCH** 요청에서 주로 사용
+- 예: 로그인 정보, JSON, XML 등
+
+```json
+{
+  "username": "chatgpt",
+  "password": "secure123"
+}
+```
+
+---
+
+### ✅ 요약
+
+HTTP Request는 다음 3가지 주요 구성으로 이루어져 있습니다:
+
+1. **Method**: 요청의 유형과 대상 명시
+2. **Headers**: 요청에 대한 부가 정보 전달
+3. **Body**: (선택적) 서버로 보내는 데이터
+
+## HTTP Response Message
+
+---
+
+### 📩 구조 개요
+
+![HTTP Response Message](./img/responseMessage.png)  
+![HTTP Response Format](./img/responseFormat.png)
+
+- HTTP 응답 메시지는 다음과 같은 구조로 구성됩니다:
+
+```
+<Status Line>
+<Header Fields>
+
+<Entity Body>
+```
+
+- 주요 구성:
+  1. **Status Line** (상태 라인)
+  2. **Header Fields** (헤더 라인들)
+  3. **Entity Body** (본문)
+
+---
+
+## 🔷 1. Status Line (상태 라인)
+
+```
+<HTTP-Version> <Status-Code> <Reason-Phrase>
+```
+
+예시:
+
+```
+HTTP/1.1 200 OK
+```
+
+- 세 가지 필드로 구성:
+  - **버전 필드**: HTTP/1.0, HTTP/1.1 등
+  - **상태 코드**: 서버 처리 결과를 나타내는 숫자 코드
+  - **상태 메시지**: 코드에 대한 설명 텍스트
+
+---
+
+## 🔶 2. Header Fields (헤더 라인)
+
+| 헤더 이름             | 설명 |
+|------------------------|------|
+| `Connection: close`    | 메시지를 보낸 후 TCP 연결을 닫음 |
+| `Date`                 | 응답이 생성된 날짜 및 시간 |
+| `Server`               | 서버 소프트웨어 정보 (예: Apache) |
+| `Last-Modified`        | 리소스가 마지막으로 수정된 시간 |
+| `Content-Length`       | 본문의 바이트 크기 |
+| `Content-Type`         | 전송된 데이터의 MIME 타입 (예: text/html) |
+
+> 📌 이 헤더들은 클라이언트의 처리, 캐싱, 연결 유지 등에 영향을 줍니다.
+
+---
+
+## 📦 3. Entity Body
+
+- 실제 응답 데이터 (HTML, JSON, 이미지 등)가 포함됨
+- 상태 코드가 `200 OK`, `400 Bad Request` 등일 때 본문이 포함될 수 있음
+- 예시:
+
+```html
+<html>
+  <head><title>Hello</title></head>
+  <body>Hello, World!</body>
+</html>
+```
+
+---
+
+## 🔁 주요 상태 코드
+
+| 상태 코드 | 메시지                  | 설명 |
+|-----------|-------------------------|------|
+| `200 OK`  | 요청이 성공적으로 처리됨 | 정상 응답과 함께 콘텐츠 포함 |
+| `301 Moved Permanently` | 리소스가 영구적으로 이동됨 | 새로운 위치는 `Location` 헤더에 표시됨 |
+| `400 Bad Request` | 잘못된 요청              | 요청 문법 오류 등 |
+| `404 Not Found` | 리소스를 찾을 수 없음     | URI에 해당하는 리소스 없음 |
+| `505 HTTP Version Not Supported` | 지원하지 않는 HTTP 버전 | 서버가 해당 버전 처리 불가 |
+
+---
+
+### ✅ 응답 메시지 예시
+
+```http
+HTTP/1.1 200 OK
+Date: Sun, 03 Aug 2025 12:00:00 GMT
+Server: Apache/2.4.1 (Unix)
+Last-Modified: Sat, 02 Aug 2025 18:30:00 GMT
+Content-Length: 137
+Content-Type: text/html
+Connection: close
+
+<html>
+  <head><title>Example</title></head>
+  <body><h1>Hello, world!</h1></body>
+</html>
+```
+
+---
+
+> 📝 HTTP 응답 메시지는 브라우저나 클라이언트가 서버의 처리 결과를 이해하는 데 핵심적인 역할을 하며, 특히 상태 코드와 헤더의 조합은 요청 처리 결과를 명확히 전달합니다.
