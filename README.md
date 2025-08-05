@@ -134,7 +134,9 @@ CS 지식을 함께 쌓는 스터디입니다! 💻📚
         <a href="https://github.com/daehun1102"><b>@Daehun</b></a>
       </td>
       <td align="center">
-        박희범!
+        박희범
+        <br/>
+        <a href="https://github.com/Peter-Park95"><b>@Heebum</b></a>
       </td>
       <td align="center">
         이정균
