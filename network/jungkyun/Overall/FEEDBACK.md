@@ -4,10 +4,6 @@
 
 ## Interview
 
-### Q) 이더넷 MTU가 뭐죠
-- 대답 X  
-  - 하나의 이더넷 프레임에서 전송할 수 있는 최대 데이터(Maximum Transmission Unit) 입니다!!
-
 ---
 
 ### Q) OSI 7계층 중 세션계층이나 표현계층을 제외하고 설명해주세요
